@@ -50,6 +50,24 @@ public class Path {
 		return i;
 	}
 
+	public boolean treeEdge(Path p) {
+		if (this.len() == p.len() + 1) {
+			for (int i = 0; i < p.len(); i++) {
+				if (this.path[i] != p.path[i])
+					return false;
+			}
+			return true;
+		}
+		if (this.len() + 1 == p.len()) {
+			for (int i = 0; i < this.len(); i++) {
+				if (this.path[i] != p.path[i])
+					return false;
+			}
+			return true;
+		}
+		return false;
+	}
+
 	public String print() {
 		String s = "";
 		for (int i = 0; i < this.path.length; i++)

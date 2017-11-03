@@ -94,7 +94,12 @@ public class ProjNode extends Node {
 		}
 		this.p = new Path(min.path);
 		this.p.addOne(minL);
-		System.out.println(this.ID + " : " + this.p.print());
+		// for (int i = 0; i < this.neigh.length; i++) {
+		// System.out.println(this.ID + " - " + this.getNode(i).ID + " : " +
+		// this.neigh[i].print() + " | " + this.linkNb[i]);
+		// }
+		// System.out.println(this.ID + " : " + this.p.print());
+		// System.out.println("---------");
 	}
 
 	public void handleMessages(Inbox inbox) {
