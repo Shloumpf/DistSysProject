@@ -150,7 +150,7 @@
 		<DefaultConnectivityModel value="UDG" />
 
 		<!--Default distribution model used when none is specified -->
-		<DefaultDistributionModel value="Grid2D" />
+		<DefaultDistributionModel value="PositionFile" />
 
 		<!--Default interference model used when none is specified -->
 		<DefaultInterferenceModel value="NoInterference" />

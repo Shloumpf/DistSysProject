@@ -18,6 +18,8 @@ import sinalgo.tools.Tools;
 
 public class ProjNode extends Node {
 
+	private boolean debug = true;
+
 	public boolean colored = false;
 	public Path p;
 	public Path neigh[];
@@ -87,19 +89,21 @@ public class ProjNode extends Node {
 		Path min = this.neigh[0];
 		int minL = this.linkNb[0];
 		for (int i = 1; i < this.nbNeigh(); i++) {
-			if (min.compare(this.neigh[i]) == 1) {
+			if (min.compare(this.neigh[i], minL, this.linkNb[i]) == 1) {
 				min = this.neigh[i];
 				minL = this.linkNb[i];
 			}
 		}
 		this.p = new Path(min.path);
 		this.p.addOne(minL);
-		// for (int i = 0; i < this.neigh.length; i++) {
-		// System.out.println(this.ID + " - " + this.getNode(i).ID + " : " +
-		// this.neigh[i].print() + " | " + this.linkNb[i]);
-		// }
-		// System.out.println(this.ID + " : " + this.p.print());
-		// System.out.println("---------");
+		if (this.debug) {
+			for (int i = 0; i < this.neigh.length; i++) {
+				System.out.println(
+						this.ID + " - " + this.getNode(i).ID + " : " + this.neigh[i].print() + " | " + this.linkNb[i]);
+			}
+			System.out.println(this.ID + " : " + this.p.print());
+			System.out.println("---------");
+		}
 	}
 
 	public void handleMessages(Inbox inbox) {

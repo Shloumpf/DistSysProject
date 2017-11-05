@@ -26,8 +26,12 @@ public class Path {
 		this.path[0] = -1;
 	}
 
-	public int compare(Path p) {
+	public int compare(Path p, int linkThis, int linkP) {
 		for (int i = 0; i < this.path.length; i++) {
+			if (this.path[i] == -2)
+				return linkThis <= p.path[i] ? -1 : 1;
+			if (p.path[i] == -2)
+				return this.path[i] < linkP ? -1 : 1;
 			if (this.path[i] < p.path[i])
 				return -1;
 			if (this.path[i] > p.path[i])
