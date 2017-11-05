@@ -18,7 +18,7 @@ import sinalgo.tools.Tools;
 
 public class ProjNode extends Node {
 
-	private boolean debug = true;
+	private boolean debug = false;
 
 	public boolean colored = false;
 	public Path p;
@@ -96,6 +96,8 @@ public class ProjNode extends Node {
 		}
 		this.p = new Path(min.path);
 		this.p.addOne(minL);
+		
+		// -- DEBUG --
 		if (this.debug) {
 			for (int i = 0; i < this.neigh.length; i++) {
 				System.out.println(
@@ -104,6 +106,7 @@ public class ProjNode extends Node {
 			System.out.println(this.ID + " : " + this.p.print());
 			System.out.println("---------");
 		}
+		// --       --
 	}
 
 	public void handleMessages(Inbox inbox) {
