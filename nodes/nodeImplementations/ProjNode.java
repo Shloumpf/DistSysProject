@@ -20,7 +20,6 @@ public class ProjNode extends Node {
 
 	private boolean debug = false;
 
-	public boolean colored = false;
 	public Path p;
 	public Path neigh[];
 	public int linkNb[];
@@ -50,7 +49,6 @@ public class ProjNode extends Node {
 		}
 		if (this.ID == 1)
 			this.p.setRoot(this.nbNodes());
-		this.colored = true;
 		(new waitTimer()).startRelative(20, this);
 	}
 
@@ -96,7 +94,7 @@ public class ProjNode extends Node {
 		}
 		this.p = new Path(min.path);
 		this.p.addOne(minL);
-		
+
 		// -- DEBUG --
 		if (this.debug) {
 			for (int i = 0; i < this.neigh.length; i++) {
@@ -106,7 +104,7 @@ public class ProjNode extends Node {
 			System.out.println(this.ID + " : " + this.p.print());
 			System.out.println("---------");
 		}
-		// --       --
+		// -- --
 	}
 
 	public void handleMessages(Inbox inbox) {
@@ -131,14 +129,8 @@ public class ProjNode extends Node {
 	public void checkRequirements() throws WrongConfigurationException {
 	}
 
-	public Color couleur() {
-		if (!colored)
-			return Color.yellow;
-		return new Color(255 / this.nbNodes() * this.p.len(), 0, 0);
-	}
-
 	public void draw(Graphics g, PositionTransformation pt, boolean highlight) {
-		this.setColor(this.couleur());
+		this.setColor(Color.magenta);
 		String text = "" + this.ID;
 		super.drawNodeAsDiskWithText(g, pt, highlight, text, 20, Color.black);
 	}
