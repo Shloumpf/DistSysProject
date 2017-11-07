@@ -53,6 +53,10 @@ public class Path {
 			i++;
 		return i;
 	}
+	
+	public int height() {
+		return this.len() - 1;
+	}
 
 	public boolean treeEdge(Path p) {
 		if (this.len() == p.len() + 1) {
