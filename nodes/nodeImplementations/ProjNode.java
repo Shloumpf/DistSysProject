@@ -191,14 +191,19 @@ public class ProjNode extends Node {
 
 	public void neighborhoodChange() {
 		if (this.nbNeigh() > 0) {
+			this.p = new Path(this.nbNodes());
 			this.neigh = new Path[this.nbNeigh()];
 			this.linkNb = new int[this.nbNeigh()];
+			this.back = (int) (Math.random() * 10000.0);
 			this.backNeigh = new int[this.nbNeigh()];
+			this.parentBridge = ((int) (Math.random() * 10000.0)) % 2 == 1;
 			for (int i = 0; i < this.nbNeigh(); i++) {
 				this.neigh[i] = new Path(this.nbNodes());
 				this.linkNb[i] = ((int) (Math.random() * 10000.0)) % this.nbNeigh();
 				this.backNeigh[i] = (int) (Math.random() * 10000.0);
 			}
+			if (this.ID == 1)
+				this.p.setRoot(this.nbNodes());
 		}
 	}
 
