@@ -51,7 +51,7 @@ public class ProjNode extends Node {
 			this.parentBridge = ((int) (Math.random() * 10000.0)) % 2 == 1;
 			for (int i = 0; i < this.nbNeigh(); i++) {
 				this.neigh[i] = new Path(this.nbNodes());
-				this.linkNb[i] = ((int) (Math.random() * 10000.0)) % this.nbNeigh();
+				this.linkNb[i] = (int) (Math.random() * 10000.0);
 				this.backNeigh[i] = (int) (Math.random() * 10000.0);
 			}
 			if (this.ID == 1)
@@ -117,13 +117,6 @@ public class ProjNode extends Node {
 			if (!isChildren(i) && !isParent(i, this.linkNb[i]) && this.neigh[i].height() < temp)
 				temp = this.neigh[i].height();
 		}
-		for (int i = 0; i < this.neigh.length; i++) {
-			System.out.println(
-					this.ID + " - " + this.getNode(i).ID + " : " + this.neigh[i].print() + " | " + this.linkNb[i]);
-		}
-		System.out.println(this.ID + " : " + this.p.print());
-		System.out.println("---------");
-
 		return temp;
 	}
 
@@ -138,7 +131,6 @@ public class ProjNode extends Node {
 		}
 		Path temp = new Path(min.path);
 		temp.addOne(minL);
-
 		return temp;
 	}
 
@@ -194,12 +186,10 @@ public class ProjNode extends Node {
 			this.p = new Path(this.nbNodes());
 			this.neigh = new Path[this.nbNeigh()];
 			this.linkNb = new int[this.nbNeigh()];
-			this.back = (int) (Math.random() * 10000.0);
 			this.backNeigh = new int[this.nbNeigh()];
-			this.parentBridge = ((int) (Math.random() * 10000.0)) % 2 == 1;
 			for (int i = 0; i < this.nbNeigh(); i++) {
 				this.neigh[i] = new Path(this.nbNodes());
-				this.linkNb[i] = ((int) (Math.random() * 10000.0)) % this.nbNeigh();
+				this.linkNb[i] = (int) (Math.random() * 10000.0);
 				this.backNeigh[i] = (int) (Math.random() * 10000.0);
 			}
 			if (this.ID == 1)

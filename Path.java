@@ -41,19 +41,25 @@ public class Path {
 	}
 
 	public void addOne(int k) {
-		int i = 0;
-		while (i < this.path.length - 1 && this.path[i] != -2)
-			i++;
-		this.path[i] = k;
+		if (this.path.length == this.len()) {
+			for (int i = 0; i < this.path.length - 1; i++)
+				this.path[i] = this.path[i + 1];
+			this.path[this.path.length - 1] = k;
+		} else {
+			int i = 0;
+			while (i < this.path.length && this.path[i] != -2)
+				i++;
+			this.path[i] = k;
+		}
 	}
 
 	public int len() {
 		int i = 0;
-		while (i < this.path.length - 1 && this.path[i] != -2)
+		while (i < this.path.length && this.path[i] != -2)
 			i++;
 		return i;
 	}
-	
+
 	public int height() {
 		return this.len() - 1;
 	}
